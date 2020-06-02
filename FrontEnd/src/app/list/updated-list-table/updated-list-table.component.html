@@ -1,0 +1,33 @@
+<h2 class="heading">Hero updated with Stats</h2>
+<table class="table  random ">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">stat(strength)</th>
+            <th scope="col">stat(intelligence)</th>
+            <th scope="col">stat(stamina)</th>
+            <th scope="col">action</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of List">
+            <th scope="row">{{list.name}}</th>
+            <td>{{list.power}}</td>
+
+
+            <td *ngFor="let stat of statsUpdated">{{stat}}</td>
+
+
+
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>

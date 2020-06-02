@@ -1,0 +1,40 @@
+<h2 class="heading" *ngIf="!updated">Tour of Heroes</h2>
+<table class="table  random " *ngIf="!updated">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">stat(strength)</th>
+            <th scope="col">stat(intelligence)</th>
+            <th scope="col">stat(stamina)</th>
+            <th scope="col">action</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of List">
+            <th scope="row">{{list.name}}</th>
+            <td>{{list.power}}</td>
+
+
+            <td *ngFor="let stat of stats">{{stat.value}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="evolve(list.name)">Evolve</button></td>
+
+
+
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>
+
+
+
+<div *ngIf="updated">
+    <app-updated-list-table [List]="List" [statsUpdated]="statsUpdated"></app-updated-list-table>
+</div>

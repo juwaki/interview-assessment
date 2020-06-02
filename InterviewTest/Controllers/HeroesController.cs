@@ -4,6 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InterviewTest.Models;
+using Microsoft.AspNetCore.Localization;
+using System.ComponentModel;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Runtime.InteropServices.ComTypes;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace InterviewTest.Controllers
 {
@@ -11,7 +19,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        public Hero[] heroes = new Hero[] {
                new Hero()
                {
                    name= "Hulk",
@@ -42,8 +50,49 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public List<int> Post(string action = "evolve")
         {
+            if (action == "evolve")
+            {
+
+                Hero hero = new Hero();
+                List<int> heroUpdated = new List<int>();
+
+
+
+                foreach (var key in this.heroes)
+                {
+                    // Int 
+                   
+                    //hero.evolve(key.stats[key]);
+
+
+                    for (int x = 0; x < key.stats.Count; x++)
+                    {
+                        Console.Write(key.stats[x].Value);
+                        hero.evolve(key.stats[x].Value);
+
+                        heroUpdated.Add(hero.evolve(key.stats[x].Value));
+
+                        
+
+                    }
+
+                }
+
+
+                return heroUpdated;
+
+
+
+
+
+
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // PUT: api/Heroes/5
